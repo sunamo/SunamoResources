@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
+    <ProjectGuid>3204432D-B6E7-4481-BEB0-8B177AF809C2</ProjectGuid>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="MultilingualResources\**">
+    </Compile>
+    <Compile Remove="Resources\**">
+    </Compile>
+    <EmbeddedResource Remove="MultilingualResources\**">
+    </EmbeddedResource>
+    <EmbeddedResource Remove="Resources\**">
+    </EmbeddedResource>
+    <None Remove="MultilingualResources\**">
+    </None>
+    <None Remove="Resources\**">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\sunamo\MultilingualResources\sunamo.cs-CZ.min.xlf" Link="sunamo.cs-cz.min.xlf">
+    </None>
+    <None Include="..\sunamo\MultilingualResources\sunamo.en-US.min.xlf" Link="sunamo.en-us.min.xlf">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="ResourcesDuo.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourcesDuo.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="ResourcesDuo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesDuo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.LibraryModel" Version="6.8.0">
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>9a19103f-16f7-4668-be54-9a1e7a4f7556</ProjectTypeGuids>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+</Project>
